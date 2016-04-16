@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 typedef  void(^CompletionClosure)(bool finshed);
-typedef CALayer* (^effectAnimatableLayerColsure) (CALayer *);
+typedef CATextLayer* (^effectAnimatableLayerColsure) (CATextLayer *);
 
 @interface CalyerAnimotion : NSObject
 

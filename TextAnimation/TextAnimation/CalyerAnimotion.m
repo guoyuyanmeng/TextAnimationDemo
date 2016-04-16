@@ -25,7 +25,7 @@ static NSString *textAnimationGroupKey = @"textAniamtionGroupKey";
 @implementation CalyerAnimotion
 
 //删除文字动画
-+ (void) removeAnimotionWithLayer:(CALayer*) layer
++ (void) removeAnimotionWithLayer:(CATextLayer*) layer
                              duration:(NSTimeInterval) duration
                                 delay:(NSTimeInterval) delay
                       effectAnimation:(effectAnimatableLayerColsure) effectAnimation
@@ -36,8 +36,8 @@ static NSString *textAnimationGroupKey = @"textAniamtionGroupKey";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay*NSEC_PER_SEC), dispatch_get_main_queue(),^(){
         
         
-        CALayer *olderLayer = [animationObjc animatableLayerCopy:layer];
-        CALayer *newLayer  = [animationObjc animatableLayerCopy:layer];
+        CATextLayer *olderLayer = [animationObjc animatableLayerCopy:layer];
+        CATextLayer *newLayer  = [animationObjc animatableLayerCopy:layer];
         CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
         animationObjc.completionBlock = completion;
         
@@ -70,7 +70,7 @@ static NSString *textAnimationGroupKey = @"textAniamtionGroupKey";
 }
 
 //添加文字动画
-+ (void) addAnimotionWithLayer:(CALayer*) layer
++ (void) addAnimotionWithLayer:(CATextLayer*) layer
                      duration:(NSTimeInterval) duration
                         delay:(NSTimeInterval) delay
               effectAnimation:(effectAnimatableLayerColsure) effectAnimation
@@ -81,8 +81,8 @@ static NSString *textAnimationGroupKey = @"textAniamtionGroupKey";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay*NSEC_PER_SEC), dispatch_get_main_queue(),^(){
         
         
-        CALayer *olderLayer = [animationObjc animatableLayerCopy:layer];
-        CALayer *newLayer  = [animationObjc animatableLayerCopy:layer];
+        CATextLayer *olderLayer = [animationObjc animatableLayerCopy:layer];
+        CATextLayer *newLayer  = [animationObjc animatableLayerCopy:layer];
         CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
         animationObjc.completionBlock = completion;
         
@@ -179,9 +179,9 @@ static NSString *textAnimationGroupKey = @"textAniamtionGroupKey";
 
 
 
-- (CALayer *)animatableLayerCopy:(CALayer *)layer {
+- (CATextLayer *)animatableLayerCopy:(CATextLayer *)layer {
     
-    CALayer *layerCopy = [CALayer layer];
+    CATextLayer *layerCopy = [CATextLayer layer];
     layerCopy.opacity = layer.opacity;
     layerCopy.bounds = layer.bounds;
     layerCopy.frame = layer.frame;

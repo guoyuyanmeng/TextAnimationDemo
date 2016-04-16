@@ -85,11 +85,36 @@ typedef  void(^textAnimationClosure)(void);
     _textContainer.lineBreakMode = [self lineBreakMode];
     
     
-    
 }
 
 
 #pragma mark -setter , getter
+-(void) setBounds:(CGRect)bounds
+{
+    [super setBounds:bounds];
+    _textContainer.size = bounds.size;
+}
+
+- (void) setTextColor:(UIColor *)textColor
+{
+    [super setTextColor:textColor];
+    
+}
+
+- (void) setNumberOfLines:(NSInteger)numberOfLines {
+
+    [super setNumberOfLines:numberOfLines];
+    _textContainer.maximumNumberOfLines = numberOfLines;
+    
+}
+
+- (void) setLineBreakMode:(NSLineBreakMode)lineBreakMode
+{
+    [super setLineBreakMode:lineBreakMode];
+    _textContainer.lineBreakMode = lineBreakMode;
+}
+
+
 - (void) setText:(NSString *)text {
 //    [super setText:text];
     
@@ -111,6 +136,7 @@ typedef  void(^textAnimationClosure)(void);
     [_textStorage setAttributedString:attributedText];
     [self setAttributedText:attributedText];
 }
+
 
 //设置需要删除的textlayer 数组
 - (void) setOldCharacterTextLayers {
@@ -164,7 +190,7 @@ typedef  void(^textAnimationClosure)(void);
         textLayer.frame = glyphRect;
         textLayer.opacity = 0.0;
         [textLayer setString:[attributedString attributedSubstringFromRange:characterRange]];
-        
+        textLayer.contentsScale = [UIScreen mainScreen].scale;//设置以Retina的质量来显示文字
         [self.layer addSublayer:textLayer];
         [_newCharacterTextLayers addObject:textLayer];
         index += characterRange.length;
@@ -215,7 +241,7 @@ didCompleteLayoutForTextContainer:(nullable NSTextContainer *)textContainer
     
     
     
-    for (CALayer *textlayer in _oldCharacterTextLayers) {
+    for (CATextLayer *textlayer in _oldCharacterTextLayers) {
         
         NSTimeInterval duration = arc4random()%100/125.0 + 0.35;
         NSTimeInterval delay = arc4random_uniform(100)/500.0;
@@ -236,7 +262,7 @@ didCompleteLayoutForTextContainer:(nullable NSTextContainer *)textContainer
         [CalyerAnimotion removeAnimotionWithLayer: textlayer
                                             duration: duration
                                                delay: delay
-                                     effectAnimation:^(CALayer *layer) {
+                                     effectAnimation:^(CATextLayer *layer) {
                                          layer.transform = transform;
                                          layer.opacity = 0.0;
                                          return layer;
@@ -283,7 +309,7 @@ didCompleteLayoutForTextContainer:(nullable NSTextContainer *)textContainer
         [CalyerAnimotion addAnimotionWithLayer: textLayer
                                       duration: duration
                                          delay: delay
-                               effectAnimation:^(CALayer *layer) {
+                               effectAnimation:^(CATextLayer *layer) {
                                   layer.transform = transform;
 //                                          layer.opacity = 1.0;
                                   return layer;

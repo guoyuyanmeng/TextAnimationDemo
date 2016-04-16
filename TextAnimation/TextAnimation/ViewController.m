@@ -56,20 +56,34 @@
     CGRect labelFrame = CGRectMake(0, 100, self.view.frame.size.width, 100);
     self.animationLabel = [[CoreAnimotionLabel alloc]initWithFrame:labelFrame];
     self.animationLabel.font = [UIFont systemFontOfSize:38.0];//UIFont(name: "Apple SD Gothic Neo", size: 38)
-    self.animationLabel.numberOfLines = 5 ;
+    self.animationLabel.numberOfLines = 5;
     self.animationLabel.textAlignment = NSTextAlignmentCenter;
     self.animationLabel.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];
-    self.animationLabel.text = @"我是要成为海贼王の男人!";
-    
-//    [self.animationLabel setBackgroundColor:[UIColor grayColor]];
+    self.animationLabel.text = @"Design Code By SwiftDesign Code By SwiftDesign Code By SwiftDesign Code By Swift";
     [self.view addSubview:self.animationLabel];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(180, 400, 80, 60);
+    btn.frame = CGRectMake(self.view.frame.size.width/2-40, 300, 80, 40);
     [btn setTitle:@"change" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+    btn.layer.borderWidth = 1.0;
+    btn.layer.borderColor = [UIColor blackColor].CGColor;
+    btn.layer.cornerRadius = 5;
+    btn.tintColor = [UIColor yellowColor];
+    btn.backgroundColor = [UIColor grayColor];
     [self.view addSubview:btn];
+    
+    
+//    CGRect labelFrame2 = CGRectMake(0, 500, self.view.frame.size.width, 100);
+//    
+//    UILabel *label = [[UILabel alloc]initWithFrame:labelFrame2];
+//    label.font = [UIFont systemFontOfSize:38.0];//UIFont(name: "Apple SD Gothic Neo", size: 38)
+//    label.numberOfLines = 5;
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.textColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0];
+//    label.text = @"我是要成为海贼王の男人!";
+//    [self.view addSubview:label];
     
 }
 
