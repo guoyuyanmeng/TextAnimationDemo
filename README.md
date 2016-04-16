@@ -1,2 +1,3 @@
 # TextAnimationDemo
-简单的文字动画
+用CATextLayer实现UIlabel文字的简单动画
+
